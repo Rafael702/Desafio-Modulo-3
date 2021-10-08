@@ -51,9 +51,9 @@ public class Venda {
     public String toString() {
         StringBuilder retorno = new StringBuilder();
         retorno.append("Cliente - " + cliente);
-        retorno.append("Vendedor Resposável - " + vendedorResponsavel);
-        retorno.append("Data de Registro: " + dataDeRegistro);
-        retorno.append("Valor A Ser Pago: " + valorASerPago);
+        retorno.append("\nVendedor Resposável - " + vendedorResponsavel);
+        retorno.append("\nData de Registro: " + dataDeRegistro);
+        retorno.append("\nValor A Ser Pago: " + valorASerPago);
         return retorno.toString();
     }
 }

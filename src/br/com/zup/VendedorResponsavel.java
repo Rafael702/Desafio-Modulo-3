@@ -6,5 +6,10 @@ public class VendedorResponsavel extends Pessoa {
         super(nome, cpf, email);
     }
 
-
+    @Override
+    public String toString() {
+        return "{"
+                + super.toString() +
+                "}";
+    }
 }
