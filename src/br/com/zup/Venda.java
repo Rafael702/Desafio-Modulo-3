@@ -1,2 +1,4 @@
-package br.com.zup;public class Venda {
+package br.com.zup;
+
+public class Venda {
 }
