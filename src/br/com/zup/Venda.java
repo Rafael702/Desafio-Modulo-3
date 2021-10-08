@@ -6,6 +6,9 @@ public class Venda {
     private String dataDeRegistro;
     private double valorASerPago;
 
+    public Venda() {
+    }
+
     public Venda(Cliente cliente, VendedorResponsavel vendedorResponsavel, double valorASerPago, String dataDeRegistro) {
         this.cliente = cliente;
         this.vendedorResponsavel = vendedorResponsavel;
@@ -45,11 +48,11 @@ public class Venda {
         this.dataDeRegistro = dataDeRegistro;
     }
 
-    public String toString(){
+    public String toString() {
         StringBuilder retorno = new StringBuilder();
         retorno.append("Cliente - " + cliente);
         retorno.append("Vendedor Resposável - " + vendedorResponsavel);
-        retorno.append("Data de Registro: " + dataDeRegistro );
+        retorno.append("Data de Registro: " + dataDeRegistro);
         retorno.append("Valor A Ser Pago: " + valorASerPago);
         return retorno.toString();
     }

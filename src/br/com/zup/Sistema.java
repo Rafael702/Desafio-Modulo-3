@@ -42,16 +42,16 @@ public class Sistema {
 
     public static void executar() {
         boolean continuarMenu = true;
-
+        Venda venda = new Venda();
         while (continuarMenu) {
 
             menuPrincipal();
             int opcao = capturarDados("Informe a sua opção escolhida:").nextInt();
 
             if(opcao == 1){
-
+               venda = cadastrarVendas();
             }else if(opcao == 2){
-
+                System.out.println(venda);
             }else {
                 continuarMenu = false;
             }
