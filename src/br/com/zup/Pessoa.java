@@ -11,6 +11,9 @@ public abstract class Pessoa {
         this.email = email;
     }
 
+    protected Pessoa() {
+    }
+
     public String getNome() {
         return nome;
     }

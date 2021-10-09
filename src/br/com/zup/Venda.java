@@ -1,19 +1,36 @@
 package br.com.zup;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Venda {
+    private VendedorResponsavel vendedor;
     private Cliente cliente;
-    private VendedorResponsavel vendedorResponsavel;
     private String dataDeRegistro;
     private double valorASerPago;
+
 
     public Venda() {
     }
 
-    public Venda(Cliente cliente, VendedorResponsavel vendedorResponsavel, double valorASerPago, String dataDeRegistro) {
-        this.cliente = cliente;
-        this.vendedorResponsavel = vendedorResponsavel;
+    public Venda(double valorASerPago, String dataDeRegistro) {
         this.valorASerPago = valorASerPago;
         this.dataDeRegistro = dataDeRegistro;
+    }
+
+    public Venda(Cliente clientes, double valorASerPago, String dataDeRegistro) {
+        this.dataDeRegistro = dataDeRegistro;
+        this.valorASerPago = valorASerPago;
+        this.cliente = clientes;
+//        this.vendedor = vendedor;
+    }
+
+    public VendedorResponsavel getVendedor() {
+        return vendedor;
+    }
+
+    public void setVendedor(VendedorResponsavel vendedor) {
+        this.vendedor = vendedor;
     }
 
     public Cliente getCliente() {
@@ -22,14 +39,6 @@ public class Venda {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
-    }
-
-    public VendedorResponsavel getVendedorResponsavel() {
-        return vendedorResponsavel;
-    }
-
-    public void setVendedorResponsavel(VendedorResponsavel vendedorResponsavel) {
-        this.vendedorResponsavel = vendedorResponsavel;
     }
 
     public double getValorASerPago() {
@@ -51,7 +60,7 @@ public class Venda {
     public String toString() {
         StringBuilder retorno = new StringBuilder();
         retorno.append("Cliente - " + cliente);
-        retorno.append("\nVendedor Resposável - " + vendedorResponsavel);
+        retorno.append("\nVendedor Resposável - " + vendedor);
         retorno.append("\nData de Registro: " + dataDeRegistro);
         retorno.append("\nValor A Ser Pago: " + valorASerPago);
         return retorno.toString();
