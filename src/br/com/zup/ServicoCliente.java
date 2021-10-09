@@ -14,7 +14,7 @@ public class ServicoCliente {
 
     public static Cliente cadastrarClientes(String nome, String cpf, String email) throws Exception {
 
-        Cliente cliente = new Cliente(nome,cpf,email);
+        Cliente cliente = new Cliente(nome, cpf, email);
         validarCadastro(cpf);
         clientes.add(cliente);
         return cliente;
@@ -39,7 +39,7 @@ public class ServicoCliente {
         return cadastrado;
     }
 
-    public static void  exibirListaCliente() {
+    public static void exibirListaCliente() {
         for (Cliente clientesReferencia : clientes) {
             System.out.println(clientesReferencia);
         }

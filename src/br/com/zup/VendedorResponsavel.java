@@ -17,9 +17,9 @@ public class VendedorResponsavel extends Pessoa {
 
     @Override
     public String toString() {
-        return "{\n"
-                + super.toString() +
-                venda +
-                "\n}";
+        StringBuilder retorno = new StringBuilder();
+        retorno.append("--------Lista-de-Vendedores-cadastrados:------");
+        retorno.append(super.toString());
+        return retorno.toString();
     }
 }

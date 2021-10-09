@@ -21,8 +21,10 @@ public class Cliente extends Pessoa {
 
     @Override
     public String toString() {
-        return "{" +
-                super.toString() +
-                "}";
+        StringBuilder retorno = new StringBuilder();
+        retorno.append("--------Lista-de-Clientes-cadastrados:------");
+        retorno.append(super.toString() + "\n");
+        retorno.append("--------------------------------------------");
+        return retorno.toString();
     }
 }

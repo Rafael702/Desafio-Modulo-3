@@ -10,10 +10,12 @@ public class ServicoVenda {
         return vendas;
     }
 
-    public static Venda cadastrarVendas(Cliente cliente, double valorASerPago, String dataDeRegistro) throws Exception {
+    public static Venda cadastrarVendas(Cliente cliente, VendedorResponsavel vendedor, double valorASerPago, String dataDeRegistro) throws Exception {
 
-        Venda venda = new Venda(cliente, valorASerPago, dataDeRegistro);
+        Venda venda = new Venda(cliente, vendedor, valorASerPago, dataDeRegistro);
         validarCadastrosCliente(cliente.getCpf(), venda);
+        validarCadastrosVendedor(vendedor.getCpf(), venda);
+
         return venda;
     }
 
@@ -24,16 +26,37 @@ public class ServicoVenda {
         return cliente;
     }
 
-    public static void validarCadastrosCliente(String cpf, Venda venda) throws Exception {
+    public static VendedorResponsavel cadastrarVendedor(String nome, String cpf, String email) throws Exception {
+        List<VendedorResponsavel> vendasDeVendedores = new ArrayList<>();
+        VendedorResponsavel vendedor = new VendedorResponsavel(nome, cpf, email);
+        vendasDeVendedores.add(vendedor);
+        return vendedor;
+    }
 
+    public static boolean validarCadastrosCliente(String cpf, Venda venda) throws Exception {
+        boolean cadastrado = false;
         if (ServicoCliente.getClientes().isEmpty()) {
             throw new Exception("Nenhum Cliente Cadastrado!");
-        } else if (ServicoCliente.validarCadastro(cpf) == true) {
-            vendas.add(venda);
+        } else if (ServicoCliente.validarCadastro(cpf)) {
+            cadastrado = true;
         } else {
             throw new Exception("Cliente não cadastrado");
         }
+        return cadastrado;
     }
+
+    public static boolean validarCadastrosVendedor(String cpf, Venda venda) throws Exception {
+        boolean cadastrado = false;
+        if (ServicoVendedor.getVendedores().isEmpty()) {
+            throw new Exception("Nenhum Vendedor Cadastrado!");
+        } else if (ServicoVendedor.validarCadastro(cpf)) {
+            cadastrado = true;
+        } else{
+            throw new Exception("Vendedor não cadastrado");
+        }
+        return cadastrado;
+    }
+
 
     public static void exibirLista() {
         for (Venda vendasReferencia : vendas) {

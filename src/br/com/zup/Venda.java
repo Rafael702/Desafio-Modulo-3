@@ -1,8 +1,5 @@
 package br.com.zup;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Venda {
     private VendedorResponsavel vendedor;
     private Cliente cliente;
@@ -18,11 +15,11 @@ public class Venda {
         this.dataDeRegistro = dataDeRegistro;
     }
 
-    public Venda(Cliente clientes, double valorASerPago, String dataDeRegistro) {
+    public Venda(Cliente clientes, VendedorResponsavel vendedor, double valorASerPago, String dataDeRegistro) {
         this.dataDeRegistro = dataDeRegistro;
         this.valorASerPago = valorASerPago;
         this.cliente = clientes;
-//        this.vendedor = vendedor;
+        this.vendedor = vendedor;
     }
 
     public VendedorResponsavel getVendedor() {
@@ -59,10 +56,17 @@ public class Venda {
 
     public String toString() {
         StringBuilder retorno = new StringBuilder();
-        retorno.append("Cliente - " + cliente);
-        retorno.append("\nVendedor Resposável - " + vendedor);
-        retorno.append("\nData de Registro: " + dataDeRegistro);
-        retorno.append("\nValor A Ser Pago: " + valorASerPago);
+        retorno.append("----------------Vendas-Cadastradas-------------");
+        retorno.append("\nCliente - ") ;
+        retorno.append("[ " + cliente.getNome() +" | "+cliente.getCpf() + " | "
+                + cliente.getEmail() + " ]");
+        retorno.append("\nVendedor Responsável - ");
+        retorno.append("[ " + vendedor.getNome() +" | "+vendedor.getCpf() + " | "
+                + vendedor.getEmail() + " ]");
+        retorno.append("\nVenda - ");
+        retorno.append("[ Data de Registro: " + dataDeRegistro);
+        retorno.append(" | Valor A Ser Pago: " + valorASerPago + " ]\n");
+        retorno.append("------------------------------------------------");
         return retorno.toString();
     }
 }
