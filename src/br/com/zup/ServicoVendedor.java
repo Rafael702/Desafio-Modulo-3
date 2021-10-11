@@ -49,7 +49,7 @@ public class ServicoVendedor {
                         System.out.println("Cliente cadastrado com Sucesso!");
                         adicionarNaLista(vendedor);
                     } else {
-                        throw new Exception("CPF ou Email Duplicado. Digite 4 e Confira os clientes Cadastrados.");
+                        throw new Exception("CPF ou Email Duplicado. Digite 4 e Confira os Vendedores Cadastrados.");
                     }
                 }
             }

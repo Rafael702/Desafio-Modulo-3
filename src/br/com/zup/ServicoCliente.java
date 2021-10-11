@@ -65,6 +65,8 @@ public class ServicoCliente {
         clientes.add(cliente);
     }
 
+
+
     public static void exibirListaCliente() {
         for (Cliente clientesReferencia : clientes) {
             System.out.println(clientesReferencia);
