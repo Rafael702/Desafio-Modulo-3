@@ -63,7 +63,7 @@ public class Sistema {
 
     }
 
-    private static VendedorResponsavel cadastrarVendedores() {
+    private static VendedorResponsavel cadastrarVendedores() throws Exception{
         System.out.println("-----------------------Cadastro-de-Vendedores---------------------");
         return ServicoVendedor.cadastrarVendedor(informarNome(), informarCpf(), informarEmail());
     }
