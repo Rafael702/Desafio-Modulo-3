@@ -16,7 +16,7 @@ public class ServicoCliente {
     public static Cliente cadastrarClientes(String nome, String cpf, String email) throws Exception {
 
         Cliente cliente = new Cliente(nome, cpf, email);
-        validarCadastroCliente(cpf, cliente);
+        validarCadastroCliente(cpf, email, cliente);
         return cliente;
     }
 
@@ -38,7 +38,7 @@ public class ServicoCliente {
         return cadastrado;
     }
 
-    public static List<Cliente> validarCadastroCliente(String novoCpf, Cliente cliente) throws Exception {
+    public static List<Cliente> validarCadastroCliente(String novoCpf, String novoEmail, Cliente cliente) throws Exception {
         //Corrigir nulos
         try {
             if (clientes.isEmpty()) {
@@ -47,12 +47,11 @@ public class ServicoCliente {
                 System.out.println("");
             } else {
                 for (Cliente clienteReferencia : clientes) {
-                    if (!clienteReferencia.getCpf().equals(novoCpf)) {
-                        System.out.println("Cliente cadastrado com Sucesso!");
+                    if (!clienteReferencia.getCpf().equals(novoCpf) & !clienteReferencia.getEmail().equals(novoEmail)) {
                         adicionarNaLista(cliente);
+                        System.out.println("Cliente cadastrado com Sucesso!");
                     } else {
-                        throw new Exception("CPF Duplicado. Digite 4 e Confira os clientes Cadastrados.");
-
+                        throw new Exception("CPF ou Email Duplicado. Digite 4 e Confira os clientes Cadastrados.");
                     }
                 }
             }
