@@ -14,7 +14,7 @@ public class ServicoVendedor {
     public static VendedorResponsavel cadastrarVendedor(String nome, String cpf, String email) throws Exception {
 
         VendedorResponsavel vendedor = new VendedorResponsavel(nome, cpf, email);
-        validarCadastroVendedor(cpf, vendedor);
+        validarCadastroVendedor(cpf, email,vendedor);
         return vendedor;
     }
 
@@ -36,7 +36,7 @@ public class ServicoVendedor {
         return cadastrado;
     }
 
-    public static List<VendedorResponsavel> validarCadastroVendedor(String novoCpf, VendedorResponsavel vendedor) throws Exception {
+    public static List<VendedorResponsavel> validarCadastroVendedor(String novoCpf, String novoEmail,VendedorResponsavel vendedor) throws Exception {
         //Corrigir nulos
         try {
             if (vendedores.isEmpty()) {
@@ -45,11 +45,11 @@ public class ServicoVendedor {
                 System.out.println("");
             } else {
                 for (VendedorResponsavel vendedorReferencia : vendedores) {
-                    if (!vendedorReferencia.getCpf().equals(novoCpf)) {
+                    if (!vendedorReferencia.getCpf().equals(novoCpf) & !vendedorReferencia.getEmail().equals(novoEmail)) {
                         System.out.println("Cliente cadastrado com Sucesso!");
                         adicionarNaLista(vendedor);
                     } else {
-                        throw new Exception("CPF Duplicado. Digite 4 e Confira os clientes Cadastrados.");
+                        throw new Exception("CPF ou Email Duplicado. Digite 4 e Confira os clientes Cadastrados.");
                     }
                 }
             }
