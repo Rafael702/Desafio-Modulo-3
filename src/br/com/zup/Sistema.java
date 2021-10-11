@@ -47,9 +47,21 @@ public class Sistema {
         return nome;
     }
 
-    private static String informarEmail() {
+    private static String informarEmail() throws Exception{
         String email = capturarDados("Informe o email:").nextLine();
-        return email;
+        if(validarEmail(email)){
+            return email;
+        }else {
+         throw new Exception("Todos os Emails devem conter @. Exemplo: pessoa@pessoa.");
+        }
+    }
+
+    public static boolean validarEmail(String email){
+        boolean emailTemArroba = false;
+        if(email.contains("@")){
+            emailTemArroba = true;
+        }
+        return emailTemArroba;
     }
 
     private static String informarCpf() {
