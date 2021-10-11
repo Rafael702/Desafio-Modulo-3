@@ -51,10 +51,42 @@ public class ServicoVenda {
             throw new Exception("Nenhum Vendedor Cadastrado!");
         } else if (ServicoVendedor.validarCadastro(cpf)) {
             cadastrado = true;
-        } else{
+        } else {
             throw new Exception("Vendedor não cadastrado");
         }
         return cadastrado;
+    }
+
+    public static List<Venda> pesquisarVendasParaClientes(String cpf) throws Exception {
+        List<Venda> buscarCliente = new ArrayList<>();
+        for (Cliente clienteReferencia : ServicoCliente.getClientes()) {
+            if (clienteReferencia.getCpf().equals(cpf)) {
+                for (Venda vendaReferencia : vendas) {
+                    if (vendaReferencia.getCliente().getCpf().equals(cpf)) {
+                        buscarCliente.add(vendaReferencia);
+                    }
+                }
+            }
+            System.out.println(buscarCliente);
+            return buscarCliente;
+        }
+        throw new Exception("Cliente não encontrado");
+    }
+
+    public static List<Venda> pesquisarVendasDoVendedor(String email) throws Exception {
+        List<Venda> buscarVendedor = new ArrayList<>();
+        for (VendedorResponsavel vendedorReferencia : ServicoVendedor.getVendedores()) {
+            if (vendedorReferencia.getEmail().equals(email)) {
+                for (Venda vendaReferencia : vendas) {
+                    if (vendaReferencia.getVendedor().getEmail().equals(email)) {
+                        buscarVendedor.add(vendaReferencia);
+                    }
+                }
+            }
+            System.out.println(buscarVendedor);
+            return buscarVendedor;
+        }
+        throw new Exception("Vendedor não encontrado");
     }
 
 
