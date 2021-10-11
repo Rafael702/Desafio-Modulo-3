@@ -1,6 +1,7 @@
 package br.com.zup;
 
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.List;
 
 public class ServicoVendedor {
@@ -10,11 +11,10 @@ public class ServicoVendedor {
         return vendedores;
     }
 
-    public static VendedorResponsavel cadastrarVendedor(String nome, String cpf, String email) {
+    public static VendedorResponsavel cadastrarVendedor(String nome, String cpf, String email) throws Exception {
 
         VendedorResponsavel vendedor = new VendedorResponsavel(nome, cpf, email);
-        validarCadastro(cpf);
-        vendedores.add(vendedor);
+        validarCadastroVendedor(cpf, vendedor);
         return vendedor;
     }
 
@@ -35,6 +35,34 @@ public class ServicoVendedor {
         }
         return cadastrado;
     }
+
+    public static List<VendedorResponsavel> validarCadastroVendedor(String novoCpf, VendedorResponsavel vendedor) throws Exception {
+        //Corrigir nulos
+        try {
+            if (vendedores.isEmpty()) {
+                adicionarNaLista(vendedor);
+                System.out.println("Cliente cadastrado com Sucesso!");
+                System.out.println("");
+            } else {
+                for (VendedorResponsavel vendedorReferencia : vendedores) {
+                    if (!vendedorReferencia.getCpf().equals(novoCpf)) {
+                        System.out.println("Cliente cadastrado com Sucesso!");
+                        adicionarNaLista(vendedor);
+                    } else {
+                        throw new Exception("CPF Duplicado. Digite 4 e Confira os clientes Cadastrados.");
+                    }
+                }
+            }
+        } catch (ConcurrentModificationException cme) {
+            System.out.println("");
+        }
+        return vendedores;
+    }
+
+    public static void adicionarNaLista(VendedorResponsavel novoVendedor) {
+        vendedores.add(novoVendedor);
+    }
+
 
     public static void exibirListaVendedor() {
         for (VendedorResponsavel vendedoresReferencia : vendedores) {
