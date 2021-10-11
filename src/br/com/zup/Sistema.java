@@ -21,6 +21,10 @@ public class Sistema {
                 ServicoVenda.exibirLista();
                 ServicoCliente.exibirListaCliente();
                 ServicoVendedor.exibirListaVendedor();
+            } else if (opcao == 5) {
+                pesquisarCliente();
+            } else if (opcao == 6) {
+                pesquisarVendedor();
             } else {
                 continuarMenu = false;
             }
@@ -39,7 +43,9 @@ public class Sistema {
         System.out.println("Digite 2: Para Cadastrar um Cliente");
         System.out.println("Digite 3: Para Cadastrar um Vendedor");
         System.out.println("Digite 4: Para Mostrar as Vendas Cadastradas");
-        System.out.println("Digite 5: Para Sair do Menu");
+        System.out.println("Digite 5: Para Pesquisar Clientes");
+        System.out.println("Digite 6: Para Pesquisar Vendedores");
+        System.out.println("Digite 7: Para Sair do Menu");
     }
 
     private static String informarNome() {
@@ -47,18 +53,18 @@ public class Sistema {
         return nome;
     }
 
-    private static String informarEmail() throws Exception{
+    private static String informarEmail() throws Exception {
         String email = capturarDados("Informe o email:").nextLine();
-        if(validarEmail(email)){
+        if (validarEmail(email)) {
             return email;
-        }else {
-         throw new Exception("Todos os Emails devem conter @. Exemplo: pessoa@pessoa.");
+        } else {
+            throw new Exception("Todos os Emails devem conter @. Exemplo: pessoa@pessoa.");
         }
     }
 
-    public static boolean validarEmail(String email){
+    public static boolean validarEmail(String email) {
         boolean emailTemArroba = false;
-        if(email.contains("@")){
+        if (email.contains("@")) {
             emailTemArroba = true;
         }
         return emailTemArroba;
@@ -75,7 +81,7 @@ public class Sistema {
 
     }
 
-    private static VendedorResponsavel cadastrarVendedores() throws Exception{
+    private static VendedorResponsavel cadastrarVendedores() throws Exception {
         System.out.println("-----------------------Cadastro-de-Vendedores---------------------");
         return ServicoVendedor.cadastrarVendedor(informarNome(), informarCpf(), informarEmail());
     }
@@ -88,7 +94,7 @@ public class Sistema {
         cliente = ServicoVenda.cadastrarClientes(informarNome(), informarCpf(), informarEmail());
         vendedor = ServicoVenda.cadastrarVendedor(informarNome(), informarCpf(), informarEmail());
 
-        return validacoesDeCadastros(cliente,vendedor,ServicoVenda.cadastrarVendas(cliente, vendedor, valorASerPago, dataDeRegistro));
+        return validacoesDeCadastros(cliente, vendedor, ServicoVenda.cadastrarVendas(cliente, vendedor, valorASerPago, dataDeRegistro));
 
     }
 
@@ -97,6 +103,16 @@ public class Sistema {
             ServicoVenda.getVendas().add(venda);
         }
         return venda;
+    }
+
+    public static void pesquisarCliente() throws Exception {
+        String cpf = informarCpf();
+        ServicoVenda.pesquisarVendasParaClientes(cpf);
+    }
+
+    public static void pesquisarVendedor() throws Exception {
+        String email = informarEmail();
+        ServicoVenda.pesquisarVendasDoVendedor(email);
     }
 
 }
