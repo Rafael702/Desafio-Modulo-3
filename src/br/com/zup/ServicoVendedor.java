@@ -14,7 +14,7 @@ public class ServicoVendedor {
     public static VendedorResponsavel cadastrarVendedor(String nome, String cpf, String email) throws Exception {
 
         VendedorResponsavel vendedor = new VendedorResponsavel(nome, cpf, email);
-        validarCadastroVendedor(cpf, email,vendedor);
+        validarCadastroVendedor(cpf, email, vendedor);
         return vendedor;
     }
 
@@ -36,12 +36,12 @@ public class ServicoVendedor {
         return cadastrado;
     }
 
-    public static List<VendedorResponsavel> validarCadastroVendedor(String novoCpf, String novoEmail,VendedorResponsavel vendedor) throws Exception {
+    public static List<VendedorResponsavel> validarCadastroVendedor(String novoCpf, String novoEmail, VendedorResponsavel vendedor) throws Exception {
         //Corrigir nulos
         try {
             if (vendedores.isEmpty()) {
                 adicionarNaLista(vendedor);
-                System.out.println("Cliente cadastrado com Sucesso!");
+                System.out.println("Vendedores cadastrado com Sucesso!");
                 System.out.println("");
             } else {
                 for (VendedorResponsavel vendedorReferencia : vendedores) {
