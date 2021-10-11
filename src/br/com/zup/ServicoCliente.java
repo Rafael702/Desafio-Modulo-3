@@ -1,6 +1,7 @@
 package br.com.zup;
 
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.List;
 
 public class ServicoCliente {
@@ -15,28 +16,54 @@ public class ServicoCliente {
     public static Cliente cadastrarClientes(String nome, String cpf, String email) throws Exception {
 
         Cliente cliente = new Cliente(nome, cpf, email);
-        validarCadastro(cpf);
-        clientes.add(cliente);
+        validarCadastroCliente(cpf, cliente);
         return cliente;
     }
 
-    public static boolean validarCadastro(String cpf) {
+    public static boolean validarCadastroParaVendas(String cpf) {
         boolean cadastrado = false;
         if (clientes.isEmpty()) {
             System.out.println("Cadastrado com Sucesso!");
             cadastrado = true;
         } else {
-            for (Cliente clienteReferencia : clientes) {
-                if (clienteReferencia.getCpf().equals(cpf)) {
+            for (Cliente clienteResponsavel : clientes) {
+                if (clienteResponsavel.getCpf().equals(cpf)) {
                     System.out.println("Cadastrado com Sucesso!");
                     cadastrado = true;
                 } else {
-                    System.out.println("Estou aqui com o " + clienteReferencia.getCpf());
+                    System.out.println("Estou aqui com o " + clienteResponsavel.getCpf());
                 }
             }
-
         }
         return cadastrado;
+    }
+
+    public static List<Cliente> validarCadastroCliente(String novoCpf, Cliente cliente) throws Exception {
+        //Corrigir nulos
+        try {
+            if (clientes.isEmpty()) {
+                adicionarNaLista(cliente);
+                System.out.println("Cliente cadastrado com Sucesso!");
+                System.out.println("");
+            } else {
+                for (Cliente clienteReferencia : clientes) {
+                    if (!clienteReferencia.getCpf().equals(novoCpf)) {
+                        System.out.println("Cliente cadastrado com Sucesso!");
+                        adicionarNaLista(cliente);
+                    } else {
+                        throw new Exception("CPF Duplicado. Digite 4 e Confira os clientes Cadastrados.");
+
+                    }
+                }
+            }
+        } catch (ConcurrentModificationException cme) {
+            System.out.println("");
+        }
+        return clientes;
+    }
+
+    public static void adicionarNaLista(Cliente cliente) {
+        clientes.add(cliente);
     }
 
     public static void exibirListaCliente() {
