@@ -6,7 +6,6 @@ public class Main {
         boolean continuar = true;
         while (continuar) {
             try {
-
                 continuar = Sistema.executar();
             } catch (Exception erro) {
                 System.out.println(erro.getMessage());

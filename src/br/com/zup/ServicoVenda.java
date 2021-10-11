@@ -37,7 +37,7 @@ public class ServicoVenda {
         boolean cadastrado = false;
         if (ServicoCliente.getClientes().isEmpty()) {
             throw new Exception("Nenhum Cliente Cadastrado!");
-        } else if (ServicoCliente.validarCadastro(cpf)) {
+        } else if (ServicoCliente.validarCadastroParaVendas(cpf)) {
             cadastrado = true;
         } else {
             throw new Exception("Cliente não cadastrado");
