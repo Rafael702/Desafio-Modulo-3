@@ -65,7 +65,7 @@ public class Venda {
                 + vendedor.getEmail() + " ]");
         retorno.append("\nVenda - ");
         retorno.append("[ Data de Registro: " + dataDeRegistro);
-        retorno.append(" | Valor A Ser Pago: " + valorASerPago + " ]\n");
+        retorno.append(" | Valor A Ser Pago: R$" + valorASerPago + " ]\n");
         retorno.append("------------------------------------------------");
         return retorno.toString();
     }
