@@ -38,6 +38,7 @@ public abstract class Pessoa {
         this.email = email;
     }
 
+    @Override
     public String toString() {
         StringBuilder retorno = new StringBuilder();
         retorno.append("\nNome: " + nome);

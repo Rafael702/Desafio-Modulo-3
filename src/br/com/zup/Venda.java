@@ -54,6 +54,7 @@ public class Venda {
         this.dataDeRegistro = dataDeRegistro;
     }
 
+    @Override
     public String toString() {
         StringBuilder retorno = new StringBuilder();
         retorno.append("----------------Vendas-Cadastradas-------------");
