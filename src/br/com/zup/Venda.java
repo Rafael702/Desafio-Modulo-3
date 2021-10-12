@@ -58,11 +58,11 @@ public class Venda {
     public String toString() {
         StringBuilder retorno = new StringBuilder();
         retorno.append("\n----------------Vendas-Cadastradas-------------");
-        retorno.append("\nCliente - ") ;
-        retorno.append("[ " + cliente.getNome() +" | "+cliente.getCpf() + " | "
+        retorno.append("\nCliente - ");
+        retorno.append("[ " + cliente.getNome() + " | " + cliente.getCpf() + " | "
                 + cliente.getEmail() + " ]");
         retorno.append("\nVendedor Responsável - ");
-        retorno.append("[ " + vendedor.getNome() +" | "+vendedor.getCpf() + " | "
+        retorno.append("[ " + vendedor.getNome() + " | " + vendedor.getCpf() + " | "
                 + vendedor.getEmail() + " ]");
         retorno.append("\nVenda - ");
         retorno.append("[ Data de Registro: " + dataDeRegistro);

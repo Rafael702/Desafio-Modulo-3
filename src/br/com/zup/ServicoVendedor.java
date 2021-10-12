@@ -19,7 +19,7 @@ public class ServicoVendedor {
     }
 
 
-    public static boolean validarCadastro(String cpf) throws Exception{
+    public static boolean validarCadastro(String cpf) throws Exception {
         boolean cadastrado = false;
         if (vendedores.isEmpty()) {
             throw new Exception("Nenhum Vendedor Cadastrado.");

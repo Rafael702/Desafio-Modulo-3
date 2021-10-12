@@ -121,7 +121,7 @@ public class Sistema {
         for (int i = 1; i <= 20; i++) {
             System.out.print("-");
             Thread.sleep(500);
-            if(i == 10){
+            if (i == 10) {
                 System.out.print("---COME-IN-BACK---");
             }
         }
