@@ -89,6 +89,12 @@ public class ServicoVenda {
         throw new Exception("Vendedor não encontrado");
     }
 
+    public static Venda validacoesDeCadastros(Cliente cliente, VendedorResponsavel vendedor, Venda venda) throws Exception {
+        if (ServicoVenda.validarCadastrosCliente(cliente.getCpf(), venda) & ServicoVenda.validarCadastrosVendedor(vendedor.getCpf(), venda)) {
+            ServicoVenda.getVendas().add(venda);
+        }
+        return venda;
+    }
 
     public static void exibirLista() {
         for (Venda vendasReferencia : vendas) {

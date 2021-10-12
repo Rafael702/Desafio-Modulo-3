@@ -94,15 +94,9 @@ public class Sistema {
         cliente = ServicoVenda.cadastrarClientes(informarNome(), informarCpf(), informarEmail());
         vendedor = ServicoVenda.cadastrarVendedor(informarNome(), informarCpf(), informarEmail());
 
-        return validacoesDeCadastros(cliente, vendedor, ServicoVenda.cadastrarVendas(cliente, vendedor, valorASerPago, dataDeRegistro));
+        return ServicoVenda.validacoesDeCadastros(cliente, vendedor,
+                ServicoVenda.cadastrarVendas(cliente, vendedor, valorASerPago, dataDeRegistro));
 
-    }
-
-    private static Venda validacoesDeCadastros(Cliente cliente, VendedorResponsavel vendedor, Venda venda) throws Exception {
-        if (ServicoVenda.validarCadastrosCliente(cliente.getCpf(), venda) & ServicoVenda.validarCadastrosVendedor(vendedor.getCpf(), venda)) {
-            ServicoVenda.getVendas().add(venda);
-        }
-        return venda;
     }
 
     public static void pesquisarCliente() throws Exception {
