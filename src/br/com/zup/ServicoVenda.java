@@ -86,6 +86,7 @@ public class ServicoVenda {
                 & ServicoVenda.validarCadastrosVendedor(vendedor.getCpf(), venda)) {
             ServicoVenda.getVendas().add(venda);
         }
+        System.out.println("Cadastro Feito Com Sucesso!!!");
         return venda;
     }
 

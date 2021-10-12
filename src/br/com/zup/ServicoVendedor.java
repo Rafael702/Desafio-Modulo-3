@@ -26,7 +26,6 @@ public class ServicoVendedor {
         } else {
             for (VendedorResponsavel vendedorResponsavel : vendedores) {
                 if (vendedorResponsavel.getCpf().equals(cpf)) {
-                    System.out.println("Cadastrado com Sucesso!");
                     cadastrado = true;
                     return cadastrado;
                 }
