@@ -18,20 +18,25 @@ public class Sistema {
             } else if (opcao == 3) {
                 cadastrarVendedores();
             } else if (opcao == 4) {
-                ServicoVenda.exibirLista();
                 ServicoCliente.exibirListaCliente();
-                ServicoVendedor.exibirListaVendedor();
             } else if (opcao == 5) {
-                pesquisarCliente();
+                ServicoVendedor.exibirListaVendedor();
             } else if (opcao == 6) {
+                ServicoVenda.exibirLista();
+            } else if (opcao == 7) {
+                pesquisarCliente();
+            } else if (opcao == 8) {
                 pesquisarVendedor();
-            } else {
+            } else if (opcao == 9) {
+                System.out.println("Saindo do Menu");
+                saindoDoPrograma();
                 continuarMenu = false;
+            } else {
+                System.out.println("Opção Inválida. Digite Uma Opção de Acordo com o Menu.");
             }
         }
         return continuarMenu;
     }
-
 
     private static Scanner capturarDados(String mensagem) {
         System.out.println(mensagem);
@@ -42,10 +47,12 @@ public class Sistema {
         System.out.println("Digite 1: Para Cadastrar uma Venda");
         System.out.println("Digite 2: Para Cadastrar um Cliente");
         System.out.println("Digite 3: Para Cadastrar um Vendedor");
-        System.out.println("Digite 4: Para Mostrar as Vendas Cadastradas");
-        System.out.println("Digite 5: Para Pesquisar Clientes");
-        System.out.println("Digite 6: Para Pesquisar Vendedores");
-        System.out.println("Digite 7: Para Sair do Menu");
+        System.out.println("Digite 4: Para Mostrar os Clientes Cadastrados");
+        System.out.println("Digite 5: Para Mostrar os Vendedores Cadastrados");
+        System.out.println("Digite 6: Para Mostrar as Vendas Cadastradas");
+        System.out.println("Digite 7: Para Pesquisar Clientes");
+        System.out.println("Digite 8: Para Pesquisar Vendedores");
+        System.out.println("Digite 9: Para Sair do Menu");
     }
 
     private static String informarNome() {
@@ -109,4 +116,14 @@ public class Sistema {
         ServicoVenda.pesquisarVendasDoVendedor(email);
     }
 
+    public static void saindoDoPrograma() throws Exception {
+        System.out.println("Saindo do Programa");
+        for (int i = 1; i <= 20; i++) {
+            System.out.print("-");
+            Thread.sleep(500);
+            if(i == 10){
+                System.out.print("---COME-IN-BACK---");
+            }
+        }
+    }
 }

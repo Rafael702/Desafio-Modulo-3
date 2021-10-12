@@ -90,7 +90,8 @@ public class ServicoVenda {
     }
 
     public static Venda validacoesDeCadastros(Cliente cliente, VendedorResponsavel vendedor, Venda venda) throws Exception {
-        if (ServicoVenda.validarCadastrosCliente(cliente.getCpf(), venda) & ServicoVenda.validarCadastrosVendedor(vendedor.getCpf(), venda)) {
+        if (ServicoVenda.validarCadastrosCliente(cliente.getCpf(), venda)
+                & ServicoVenda.validarCadastrosVendedor(vendedor.getCpf(), venda)) {
             ServicoVenda.getVendas().add(venda);
         }
         return venda;
