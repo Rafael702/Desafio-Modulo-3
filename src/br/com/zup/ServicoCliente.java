@@ -27,12 +27,11 @@ public class ServicoCliente {
             for (Cliente clienteResponsavel : clientes) {
                 if (clienteResponsavel.getCpf().equals(cpf)) {
                     cadastrado = true;
-                } else {
-                    throw new Exception("CPF do Cliente não foi Encontrado. Verifique a lista de Clientes cadastrados na Opção 4");
+                    return cadastrado;
                 }
             }
+            throw new Exception("CPF do Cliente não foi Encontrado. Verifique a lista de Clientes cadastrados na Opção 4");
         }
-        return cadastrado;
     }
 
     public static List<Cliente> validarCadastroCliente(String novoCpf, String novoEmail, Cliente cliente) throws Exception {
