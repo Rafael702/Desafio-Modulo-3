@@ -12,7 +12,6 @@ public class ServicoCliente {
         return clientes;
     }
 
-
     public static Cliente cadastrarClientes(String nome, String cpf, String email) throws Exception {
 
         Cliente cliente = new Cliente(nome, cpf, email);
@@ -20,18 +19,16 @@ public class ServicoCliente {
         return cliente;
     }
 
-    public static boolean validarCadastroParaVendas(String cpf) {
+    public static boolean validarCadastroParaVendas(String cpf) throws Exception {
         boolean cadastrado = false;
         if (clientes.isEmpty()) {
-            System.out.println("Cadastrado com Sucesso!");
-            cadastrado = true;
+            throw new Exception("Nenhum Cliente Cadastrado.");
         } else {
             for (Cliente clienteResponsavel : clientes) {
                 if (clienteResponsavel.getCpf().equals(cpf)) {
-                    System.out.println("Cadastrado com Sucesso!");
                     cadastrado = true;
                 } else {
-                    System.out.println("Estou aqui com o " + clienteResponsavel.getCpf());
+                    throw new Exception("CPF do Cliente não foi Encontrado. Verifique a lista de Clientes cadastrados na Opção 4");
                 }
             }
         }

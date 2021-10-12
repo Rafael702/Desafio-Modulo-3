@@ -18,18 +18,19 @@ public class ServicoVendedor {
         return vendedor;
     }
 
-    public static boolean validarCadastro(String cpf) {
+
+    public static boolean validarCadastro(String cpf) throws Exception{
         boolean cadastrado = false;
         if (vendedores.isEmpty()) {
-            System.out.println("Cadastrado com Sucesso!");
-            cadastrado = true;
+            throw new Exception("Nenhum Vendedor Cadastrado.");
         } else {
             for (VendedorResponsavel vendedorResponsavel : vendedores) {
                 if (vendedorResponsavel.getCpf().equals(cpf)) {
                     System.out.println("Cadastrado com Sucesso!");
                     cadastrado = true;
                 } else {
-                    System.out.println("Estou aqui com o " + vendedorResponsavel.getCpf());
+                    throw new Exception("Email do Vendedor não foi Encontrado. Verifique a lista de Vendedores cadastrados na Opção 4");
+
                 }
             }
         }
