@@ -28,13 +28,11 @@ public class ServicoVendedor {
                 if (vendedorResponsavel.getCpf().equals(cpf)) {
                     System.out.println("Cadastrado com Sucesso!");
                     cadastrado = true;
-                } else {
-                    throw new Exception("Email do Vendedor não foi Encontrado. Verifique a lista de Vendedores cadastrados na Opção 4");
-
+                    return cadastrado;
                 }
             }
+            throw new Exception("Email do Vendedor não foi Encontrado. Verifique a lista de Vendedores cadastrados na Opção 4");
         }
-        return cadastrado;
     }
 
     public static List<VendedorResponsavel> validarCadastroVendedor(String novoCpf, String novoEmail, VendedorResponsavel vendedor) throws Exception {
@@ -47,7 +45,7 @@ public class ServicoVendedor {
             } else {
                 for (VendedorResponsavel vendedorReferencia : vendedores) {
                     if (!vendedorReferencia.getCpf().equals(novoCpf) & !vendedorReferencia.getEmail().equals(novoEmail)) {
-                        System.out.println("Cliente cadastrado com Sucesso!");
+                        System.out.println("Vendedor cadastrado com Sucesso!");
                         adicionarNaLista(vendedor);
                     } else {
                         throw new Exception("CPF ou Email Duplicado. Digite 4 e Confira os Vendedores Cadastrados.");

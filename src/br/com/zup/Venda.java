@@ -57,7 +57,7 @@ public class Venda {
     @Override
     public String toString() {
         StringBuilder retorno = new StringBuilder();
-        retorno.append("----------------Vendas-Cadastradas-------------");
+        retorno.append("\n----------------Vendas-Cadastradas-------------");
         retorno.append("\nCliente - ") ;
         retorno.append("[ " + cliente.getNome() +" | "+cliente.getCpf() + " | "
                 + cliente.getEmail() + " ]");
